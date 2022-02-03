@@ -43,3 +43,11 @@ MYSQL_HOST=<parts unknown>
 ```
 
 ## Developing
+This repository is configured for development with Visual Studio Code's Remote Container feature.  This particular configuration uses Docker Compose to configure both the workspace for our script and also a development MySQL database.  Docker for Desktop ships with Docker Compose, but the Compose binary is not included with every system's Docker engine package.  See https://docs.docker.com/compose/install/ for instructions.
+
+1. Install the extension https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+2. From the command pallet (`cmd`+`shift`+`p` on MacOS), select `Remote-Containers: Reopen in Container`
+
+VSCode will build a development container by extending the Dockerfile in the root of the repository.  When launched, the container will have environment variables set to connect to the development MySQL database [see here](.devcontainer/docker-compose.yml#L38-L42)
+
+The dev container also installs `ipykernel` allowing you to run Jupyter Notebooks.  See [explore.ipynb](notebooks/explore.ipynb) for an example of how I built proof of concept code with some smoke testing along the way
